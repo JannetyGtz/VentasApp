@@ -1,0 +1,2 @@
+# VentasApp
+Aplicacion de ventas
