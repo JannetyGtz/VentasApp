@@ -3,7 +3,7 @@ class CreateStores < ActiveRecord::Migration
     create_table :stores do |t|
       t.string :name
       t.string :address
-      t.integer :phone
+      t.string :phone
       t.timestamps null: false
     end
   end

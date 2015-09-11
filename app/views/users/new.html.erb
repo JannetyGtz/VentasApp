@@ -1,10 +1,25 @@
-<div class="login">
+<div class="user">
   <div class="container">
     <div class="form">
 
     <h1>Nuevo Usuario</h1>
+      <% @stores.each do |store| %>
+        <p><%= store.name%></p>
+      <%end%>
 
-    <%= form_for(@user_new) do |f| %>
+      <%= form_for(@user_new) do |f| %>
+
+        <% if @user_new.errors.any? %>
+          <div id="error_explanation">
+          <h3>Tienes errores al crear usuario</h3>
+
+          <ul>
+        <% @user_new.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+     <% end %>
       <%= f.text_field :name, :placeholder => "Nombre Usuario" %>
       <br>
       <br>
@@ -23,3 +38,4 @@
     </div>
   </div>
 </div>
+

@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 	def new
 		@user_new = User.new
+		@stores = Store.all
 	end
 
 	def create

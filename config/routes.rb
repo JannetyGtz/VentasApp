@@ -1,8 +1,15 @@
 Rails.application.routes.draw do
+  get 'stores/new'
+
   resources :users
   root 'users#index'
-  get 'new_user' => 'users#new'
+  get 'new_user' => 'users#new',as: :user_new 
   post 'create' => 'users#create'
+  
+  #resources :stores, only: [:new, :create]
+  resources :stores
+  get 'new_store' => 'stores#new'
+  post 'create' => 'stores#create'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
