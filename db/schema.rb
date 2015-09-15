@@ -11,39 +11,43 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_150_907_183_800) do
-  create_table 'payments', force: :cascade do |t|
-    t.float 'price'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.integer 'sale_id'
+ActiveRecord::Schema.define(version: 20150907183800) do
+
+  create_table "payments", force: :cascade do |t|
+    t.float    "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "sale_id"
   end
 
-  create_table 'sales', force: :cascade do |t|
-    t.float 'total'
-    t.text 'comment'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.integer 'store_id'
-    t.integer 'user_id'
+  create_table "sales", force: :cascade do |t|
+    t.float    "total"
+    t.text     "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "store_id"
+    t.integer  "user_id"
   end
 
-  create_table 'stores', force: :cascade do |t|
-    t.string 'name'
-    t.string 'address'
-    t.string 'phone'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
+  create_table "stores", force: :cascade do |t|
+    t.string   "name"
+    t.string   "address"
+    t.string   "phone"
+    t.string   "estado"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table 'users', force: :cascade do |t|
-    t.string 'name'
-    t.string 'email'
-    t.string 'password_digest'
-    t.string 'cellphone'
-    t.string 'role'
-    t.datetime 'created_at',      null: false
-    t.datetime 'updated_at',      null: false
-    t.integer 'store_id'
+  create_table "users", force: :cascade do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "password_digest"
+    t.string   "cellphone"
+    t.string   "role"
+    t.string   "estado"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "store_id"
   end
+
 end
