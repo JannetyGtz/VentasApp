@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20150907183800) do
     t.string   "name"
     t.string   "address"
     t.string   "phone"
-    t.string   "estado"
+    t.string   "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 20150907183800) do
     t.string   "password_digest"
     t.string   "cellphone"
     t.string   "role"
-    t.string   "estado"
+    t.string   "status"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.integer  "store_id"

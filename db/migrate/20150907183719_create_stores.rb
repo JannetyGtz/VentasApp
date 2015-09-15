@@ -4,7 +4,11 @@ class CreateStores < ActiveRecord::Migration
       t.string :name
       t.string :address
       t.string :phone
+<<<<<<< HEAD
       t.string :estado
+=======
+      t.string :status
+>>>>>>> jannety
       t.timestamps null: false
     end
   end
