@@ -1,15 +1,21 @@
 Rails.application.routes.draw do
-  get 'stores/new'
-
+  root 'sessions#new'
+  # Usuarios
   resources :users
-  root 'users#index'
-  get 'new_user' => 'users#new',as: :user_new 
+  get 'new_user' => 'users#new', as: :user_new
   post 'create' => 'users#create'
-  
-  #resources :stores, only: [:new, :create]
+  get '/user/index' => 'users#index', as: :user_index
+  # stores
   resources :stores
-  get 'new_store' => 'stores#new'
+  get 'new_store' => 'stores#new', as: :store_new
   post 'create' => 'stores#create'
+  get '/store/index' => 'stores#index', as: :store_index
+  # Rutas para sesiones
+  get '/login' => 'sessions#new'
+  post 'login' => 'sessions#create'
+  delete 'logout' => 'sessions#destroy'
+  #Ventas
+  get 'sales' => 'sales#index', as: :principal
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

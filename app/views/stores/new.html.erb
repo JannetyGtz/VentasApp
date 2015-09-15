@@ -1,38 +1,6 @@
-<div class="store">
-  <div class="container">
-    <div class="form">
+<h1>Nueva Tienda</h1>
 
-    <h1>Nueva Tienda</h1>
+<%= render 'form' %>
 
-     <%= form_for @store do |f| %>
-
-        <% if @store.errors.any? %>
-          <div id="error_explanation">
-          <h3>Tienes errores al crear la tienda</h3>
-
-          <ul>
-        <% @store.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-        </ul>
-      </div>
-     <% end %>
-
-      <%= f.text_field :name, :placeholder => "Nombre Tienda" %>
-      <br>
-      <br>
-      <%= f.text_field :address, :placeholder => "Direccion" %>
-      <br>
-      <br>
-      <%= f.text_field :phone, :placeholder => "Telefono" %>
-      <br>
-      <br>
-      <%= f.submit "Crear", class: "btn-submit" %>
-    <% end %>
-    
-    <%= link_to "Crear nuevo usuario", user_new_path %>
-
-    </div>
-  </div>
-</div>
-
+<%= link_to "Crear nuevo usuario", user_new_path %>
+| <%= link_to "Ver tiendas", store_index_path %>

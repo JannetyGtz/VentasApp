@@ -1,0 +1,20 @@
+<%if flash[:notice] %>
+  <p><%= flash[:notice]%></p>
+<%end%>
+
+<p>
+  <strong>User:</strong>
+  <%= @user.name %>
+</p>
+ 
+<p>
+  <strong>Email:</strong>
+  <%= @user.name%>
+</p>
+
+<p>
+  <strong>Celular:</strong>
+  <%= @user.cellphone %>
+</p>
+
+<%= link_to 'Regresar', user_index_path %>

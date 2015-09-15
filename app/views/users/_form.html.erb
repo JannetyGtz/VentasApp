@@ -1,0 +1,38 @@
+<div class="user">
+  <div class="container">
+    <div class="form">
+
+    <%= form_for @user_new do |f| %>
+
+      <% if @user_new.errors.any? %>
+      <div id="error_explanation">
+        <h3><%= pluralize(@user_new.errors.count, "error") %>Tienes errores al crear usuario</h3>
+        <ul>
+        <% @user_new.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+      <% end %>
+   
+      <%= f.collection_select(:store_id, Store.all, :id, :name, { :prompt => 'Tiendas', :selected => @user_new.store_id}) %>
+      <br>
+      <br>
+      <%= f.text_field :name, :placeholder => "Nombre Usuario" %>
+      <br>
+      <br>
+      <%= f.email_field :email, :placeholder => "Email" %>
+      <br>
+      <br>
+      <%= f.password_field :password, :placeholder => "Contrasena" %>
+      <br>
+      <br>
+      <%= f.text_field :cellphone, :placeholder => "Celular" %>
+      <br>
+      <br>
+      <%= f.submit%>
+    <% end %>
+
+    </div>
+  </div>
+</div>

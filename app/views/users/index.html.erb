@@ -1,1 +1,24 @@
-<h2>Welcome</h2>
+<h1>Usuarios</h1>
+ 
+<table>
+  <tr>
+    <th>Nombre</th>
+    <th>Email</th>
+    <th>Celular</th>
+    <th colspan="2"></th>
+  </tr>
+ 
+  <% @users.each do |user| %>
+    <tr>
+      <td><%= user.name %></td>
+      <td><%= user.email %></td>
+      <td><%= user.cellphone %></td>
+      <td><%= link_to 'Show', user_path(user) %></td>
+      <td><%= link_to 'Edit', edit_user_path(user) %></td>
+      <td><%= link_to 'Destroy', user_path(user),
+                    method: :delete, data: { confirm: 'Seguro?' } %></td>
+    </tr>
+  <% end %>
+</table>
+<br>
+<%= link_to 'Nuevo Usuario', user_new_path %>

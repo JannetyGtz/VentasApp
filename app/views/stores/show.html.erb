@@ -1,0 +1,19 @@
+<%if flash[:notice] %>
+  <p><%= flash[:notice]%></p>
+<%end%>
+<p>
+  <strong>Tienda:</strong>
+  <%= @store.name %>
+</p>
+ 
+<p>
+  <strong>Direccion:</strong>
+  <%= @store.address %>
+</p>
+
+<p>
+  <strong>Telefono:</strong>
+  <%= @store.phone %>
+</p>
+
+<%= link_to 'Regresar', store_index_path %>
