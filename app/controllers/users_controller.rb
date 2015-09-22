@@ -1,9 +1,10 @@
 class UsersController < ApplicationController
   before_action :get_user, only: [:show, :edit, :update, :destroy] 
   before_action :require_user
+  #before_action :require_admin, only: [:show]
 
-  def index
-    @users = User.all
+  def index    
+    @users = User.based_in_merchant(current_user) 
   end
   
   def new
@@ -14,7 +15,7 @@ class UsersController < ApplicationController
     @user_new = User.new(user_params)
     if @user_new.save
       flash[:notice] = 'Usuario creado!'
-      redirect_to principal_path
+      redirect_to user_index_path
     else
       render 'new'
     end
@@ -22,7 +23,7 @@ class UsersController < ApplicationController
 
   def show
   end
-
+  
   def edit
   end
 
@@ -41,7 +42,6 @@ class UsersController < ApplicationController
   end
 
   private
-
   def get_user
     @user_new = User.find(params[:id])
   end

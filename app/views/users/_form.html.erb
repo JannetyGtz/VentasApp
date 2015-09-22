@@ -14,10 +14,15 @@
         </ul>
       </div>
       <% end %>
-   
-      <%= f.collection_select(:store_id, Store.all, :id, :name, { :prompt => 'Tiendas', :selected => @user_new.store_id}) %>
+      <% if current_user && current_user.admin? %>
+        <%= f.collection_select(:store_id, Store.all, :id, :name, { :prompt => 'Tiendas', :selected => @user_new.store_id}) %>
+        <br>
+        <br>
+      <%else%>
+      <p>Tienda: <%= current_user.store.name %> </p>
+      <%=f.hidden_field :store_id, value: current_user.store.id%>
       <br>
-      <br>
+      <%end%> 
       <%= f.text_field :name, :placeholder => "Nombre Usuario" %>
       <br>
       <br>
