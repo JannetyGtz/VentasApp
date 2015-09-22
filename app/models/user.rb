@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   belongs_to :store
   has_many :sales
+  before_save :default_values
 
   has_secure_password
 
@@ -10,11 +11,19 @@ class User < ActiveRecord::Base
 
   validates :email, uniqueness: true
 
-  before_save :default_values
+  def self.based_in_merchant(current)
+    current.admin? ? User.order(:store_id ).all : User.where(store_id: current.store.id)
+  end
+
+  def admin? 
+    self.role == 'Administrador' 
+  end
 
   private
-
   def default_values
     self.role ||= 'Usuario'
+    self.status ||= 'Activo'
   end
+
 end
+  
