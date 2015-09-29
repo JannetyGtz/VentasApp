@@ -15,7 +15,7 @@
       </div>
       <% end %>
       <% if current_user && current_user.admin? %>
-        <%= f.collection_select(:store_id, Store.all, :id, :name, { :prompt => 'Tiendas', :selected => @user_new.store_id}) %>
+        <%= f.collection_select(:store_id, Store.where(status: 'Activa'), :id, :name, { :prompt => 'Tiendas', :selected => @user_new.store_id}) %>
         <br>
         <br>
       <%else%>
@@ -27,7 +27,7 @@
       <br>
       <br>
       <%= f.email_field :email, :placeholder => "Email" %>
-      <br>
+      <br>  
       <br>
       <%= f.password_field :password, :placeholder => "Contrasena" %>
       <br>

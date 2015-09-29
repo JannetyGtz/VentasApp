@@ -1,10 +1,12 @@
+<%if flash[:notice] %>
+  <p><%= flash[:notice]%></p>
+<%end%>
 <div class="login">
 	<div class="container">
 		<div class="form">
-
       <h1>Log in</h1>
       <%= form_for(:session, url: login_path) do |f| %> 
-        <%= f.text_field :name, :placeholder => "Nombre Usuario" %> 
+        <%= f.text_field :name || :email, :placeholder => "Nombre Usuario o Email" %> 
         <br>
         <br>
         <%= f.password_field :password, :placeholder => "Password" %> 

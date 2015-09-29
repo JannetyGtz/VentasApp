@@ -5,11 +5,13 @@ Rails.application.routes.draw do
   get 'new_user' => 'users#new', as: :user_new
   post 'create' => 'users#create'
   get '/user/index' => 'users#index', as: :user_index
+  patch '/user/:id/desstroy' => 'users#destroy', as: 'destroy_user'
   # stores
   resources :stores
   get 'new_store' => 'stores#new', as: :store_new
   post 'create' => 'stores#create'
   get '/store/index' => 'stores#index', as: :store_index
+  patch '/store/:id/destroy' => 'stores#destroy', as: 'destroy_store'
   # Rutas para sesiones
   get '/login' => 'sessions#new'
   post 'login' => 'sessions#create'

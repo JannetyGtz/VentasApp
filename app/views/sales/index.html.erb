@@ -3,3 +3,7 @@
 <p>NUEVA VENTA</p>
 <p>CONSULTAR VENTAS</p>
 <%= link_to "Crear un usuario", user_new_path %>
+<br>
+<% if current_user && current_user.admin? %>
+  <%= link_to "Crear nueva tienda", store_new_path %>
+<% end %>
