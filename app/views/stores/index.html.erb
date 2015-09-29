@@ -15,8 +15,8 @@
       <td><%= store.phone %></td>
       <td><%= link_to 'Show', store_path(store) %></td>
       <td><%= link_to 'Edit', edit_store_path(store) %></td>
-      <td><%= link_to 'Destroy', store_path(store),
-                    method: :delete, data: { confirm: 'Seguro?' } %></td>
+      <td><%= link_to 'Destroy', destroy_store_path(store), method: :patch,
+                    action: 'destroy', data: { confirm: 'Seguro?' } %></td>
     </tr>
   <% end %>
 </table>

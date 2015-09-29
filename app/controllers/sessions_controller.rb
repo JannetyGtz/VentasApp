@@ -1,15 +1,17 @@
 class SessionsController < ApplicationController
-	def new
+	#before_action :active_user
+  def new
 		
 	end
 	
 	def create
-		@user = User.find_by_name(params[:session][:name])
+		@user = User.find_by_name(params[:session][:name || :email])
   		if @user && @user.authenticate(params[:session][:password])
     		session[:user_id] = @user.id
     		redirect_to principal_path
   		else
-    		redirect_to 'login'
+        flash[:notice] = 'Ususario o contraseña invalidos'
+    		redirect_to '/login'
   		end 
 	end
 

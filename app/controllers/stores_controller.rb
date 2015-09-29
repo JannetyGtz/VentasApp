@@ -1,8 +1,13 @@
 class StoresController < ApplicationController
-  before_action :require_user
+  before_action :get_store, only: [:show, :edit, :update, :destroy]
+  before_action :require_user 
+  before_action :require_admin
+
+
   def index
-    @stores = Store.all
+    @stores = Store.where(status: 'Activa')
   end
+
   def new
     @store = Store.new
   end
@@ -16,28 +21,27 @@ class StoresController < ApplicationController
     end
   end
   def show
-    get_store
   end
   
   def edit
-    get_store
   end
+
   def update
-    get_store
     if @store.update(store_params)
       redirect_to @store
     else
       render 'edit'
     end
   end
-  def store_status
-    get_store
-    if @store.update(store_params)
-      redirect_to @store
+
+  def destroy
+    if @store.update_attribute(:status, "Inactiva")
+      redirect_to store_index_path
     else
-      render 'edit'
+      render '/'
     end
   end
+
 private
   
   def get_store
@@ -45,6 +49,6 @@ private
   end
 
   def store_params
-    params.require(:store).permit(:name, :address, :phone)
+    params.require(:store).permit(:name, :address, :phone,:status)
   end
 end

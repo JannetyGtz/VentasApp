@@ -9,8 +9,13 @@ class User < ActiveRecord::Base
   validates_format_of :email, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
   validates :cellphone, numericality: { only_integer: true }, length: { minimum: 10 }
 
-  validates :email, uniqueness: true
+  validates :email, :name, uniqueness: true
+  validates :name, length: { minimum: 4 }
 
+  # def active_user
+  #   @user_new = User.where(status: 'Activo')
+  # end
+  
   def self.based_in_merchant(current)
     current.admin? ? User.order(:store_id ).all : User.where(store_id: current.store.id)
   end
@@ -26,4 +31,3 @@ class User < ActiveRecord::Base
   end
 
 end
-  
