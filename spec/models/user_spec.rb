@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-it {should belongs_to(:store)}
+it { should belongs_to(:store) }
 
 describe User, type: :model do
   it 'validate email' do

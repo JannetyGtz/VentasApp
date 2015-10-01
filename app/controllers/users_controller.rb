@@ -1,12 +1,12 @@
 class UsersController < ApplicationController
-  before_action :get_user, only: [:show, :edit, :update, :destroy] 
+  before_action :get_user, only: [:show, :edit, :update, :destroy]
   before_action :require_user
-  #before_action :require_admin, only: [:show, :edit]
+  # before_action :require_admin, only: [:show, :edit]
 
-  def index    
+  def index
     @users = User.based_in_merchant(current_user).where(status: 'Activo')
   end
-  
+
   def new
     @user_new = User.new
   end
@@ -23,11 +23,11 @@ class UsersController < ApplicationController
 
   def show
   end
-  
+
   def edit
   end
 
-  def update  
+  def update
     if @user_new.update(user_params)
       redirect_to user_index_path
     else
@@ -36,7 +36,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    if @user_new.update_attribute(:status,"Inactivo")
+    if @user_new.update_attribute(:status, 'Inactivo')
       redirect_to user_index_path
     else
       render '/'
@@ -44,6 +44,7 @@ class UsersController < ApplicationController
   end
 
   private
+
   def get_user
     @user_new = User.find(params[:id])
   end
