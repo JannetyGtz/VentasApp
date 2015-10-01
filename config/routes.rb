@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'password_resets/new'
+
   root 'sessions#new'
   # Usuarios
   resources :users
@@ -6,7 +8,7 @@ Rails.application.routes.draw do
   post 'create' => 'users#create'
   get '/user/index' => 'users#index', as: :user_index
   patch '/user/:id/desstroy' => 'users#destroy', as: 'destroy_user'
-  # stores
+  # Stores
   resources :stores
   get 'new_store' => 'stores#new', as: :store_new
   post 'create' => 'stores#create'
@@ -16,8 +18,11 @@ Rails.application.routes.draw do
   get '/login' => 'sessions#new'
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
-  #Ventas
+  # Ventas
   get 'sales' => 'sales#index', as: :principal
+
+  # Password
+  resources :password_resets
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

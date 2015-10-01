@@ -6,11 +6,12 @@ class Store < ActiveRecord::Base
   validates :name, length: { minimum: 5 }
   validates :phone, numericality: { only_integer: true }, length: { minimum: 10, maximum: 10 }
 
-# def active_store
-#   @stores = Store.where(status: 'Activa')
-# end
+  # def active_store
+  #   @stores = Store.where(status: 'Activa')
+  # end
 
-private
+  private
+
   def default_values
     self.status ||= 'Activa'
   end
